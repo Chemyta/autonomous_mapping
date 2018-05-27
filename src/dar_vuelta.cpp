@@ -64,7 +64,7 @@ public:
   
   void publicar_movimiento(){
 	  geometry_msgs::Twist movimiento;
-	  movimiento.angular.z = 0.5;
+	  movimiento.angular.z = 0.1;
 	  mov_.publish(movimiento);
   }
   
