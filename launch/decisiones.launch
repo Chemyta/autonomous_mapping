@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<launch>
+
+  
+  <!-- Decisión de movimiento -->
+  <node pkg="autonomous_mapping" name="seguir_pared" type="seguir_pared" output="screen"/>
+  <node pkg="autonomous_mapping" name="dar_vuelta" type="dar_vuelta" output="screen"/>
+
+</launch>

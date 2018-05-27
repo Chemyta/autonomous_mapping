@@ -73,10 +73,10 @@ public:
   
   void publicar_movimiento(){
 	  geometry_msgs::Twist movimiento;
-	  movimiento.linear.x = 0.1;
+	  movimiento.linear.x = 0.07;
 	  // Calculamos el movimiento linear necesario
 	  for (int i = 0; i<5; i++){
-		  if (centro[i] < 1.2){
+		  if (centro[i] < 1){
 			  movimiento.linear.x = 0;
 			  break;
 		  }
@@ -85,9 +85,11 @@ public:
 	  // Calculamos el movimiento angular necesario
 	  movimiento.angular.z = 0;
 	  for (int i = 0; i<5; i++){
-		  if (derecha[i] < 1) movimiento.angular.z += 0.02;
-		  else movimiento.angular.z -= 0.02;
+		  if (derecha[i] < 1.75) movimiento.angular.z += 0.01;
+		  else movimiento.angular.z -= 0.01;
 	  }
+	  // El robot va algo lento por las esquinas, por lo que en ese caso intentamos girar cuanto antes
+	  //if (movimiento.linear.x = 0) movimiento.angular.z = movimiento.angular.z * 2;
 	  
 	  // Por último, se publica
 	  mov_.publish(movimiento);
